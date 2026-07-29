@@ -42,18 +42,31 @@
             overflow: hidden;
         }
 
-        /* --- STICKER TRÔI NỔI TRANG BÌA --- */
+        /* --- STICKER TRÔI NỔI TRANG BÌA (NÂNG CẤP SIÊU MƯỢT) --- */
         .floating-icon {
             position: absolute;
-            opacity: 0.35;
-            animation: float-around 5s ease-in-out infinite alternate;
             z-index: 1;
             user-select: none;
+            pointer-events: none;
+            opacity: 0.6;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
-        @keyframes float-around {
-            0% { transform: translateY(0) rotate(-10deg); }
-            100% { transform: translateY(-20px) rotate(15deg); }
+        /* 3 bộ chuyển động khác nhau tạo sự tự nhiên */
+        @keyframes float-around-1 {
+            0% { transform: translate(0, 0) rotate(-15deg); }
+            50% { transform: translate(15px, -25px) rotate(15deg); }
+            100% { transform: translate(0, 0) rotate(-15deg); }
+        }
+        @keyframes float-around-2 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.15); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes float-around-3 {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+            50% { transform: translate(10px, 30px) rotate(20deg); opacity: 0.9; }
+            100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
         }
 
         /* VÒM ĐỎ TRÊN CÙNG */
@@ -186,22 +199,25 @@
 </head>
 <body>
 
-    <!-- MÀN HÌNH CHỜ HIỆU ỨNG SÂU CÓ STICKER, LOGO VÀ AVATAR TÁCH NỀN -->
+    <!-- MÀN HÌNH CHỜ (CÓ 10 STICKER BAY BỒNG BỀNH SIÊU MƯỢT) -->
     <div id="welcome-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #8B0000 0%, #4A0000 100%); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; overflow: hidden;">
         
         <!-- Các icon/sticker trang trí trôi nổi -->
-        <div class="floating-icon" style="top: 15%; left: 15%; font-size: 30px; animation-delay: 0s;">🎓</div>
-        <div class="floating-icon" style="top: 25%; right: 15%; font-size: 25px; animation-delay: 1.5s;">✨</div>
-        <div class="floating-icon" style="bottom: 25%; left: 20%; font-size: 28px; animation-delay: 2s;">📜</div>
-        <div class="floating-icon" style="bottom: 15%; right: 20%; font-size: 35px; animation-delay: 0.5s;">🎓</div>
-        <div class="floating-icon" style="top: 40%; left: 10%; font-size: 20px; animation-delay: 1s;">✨</div>
-        <div class="floating-icon" style="top: 50%; right: 10%; font-size: 24px; animation-delay: 2.5s;">✨</div>
+        <div class="floating-icon" style="top: 10%; left: 15%; font-size: 32px; animation: float-around-1 6s ease-in-out infinite;">🎓</div>
+        <div class="floating-icon" style="top: 25%; right: 15%; font-size: 28px; animation: float-around-2 5s ease-in-out infinite;">✨</div>
+        <div class="floating-icon" style="bottom: 25%; left: 10%; font-size: 30px; animation: float-around-3 7s ease-in-out infinite;">📜</div>
+        <div class="floating-icon" style="bottom: 12%; right: 18%; font-size: 35px; animation: float-around-1 5.5s ease-in-out infinite;">🎓</div>
+        <div class="floating-icon" style="top: 40%; left: 8%; font-size: 24px; animation: float-around-2 6.5s ease-in-out infinite;">🎉</div>
+        <div class="floating-icon" style="top: 55%; right: 8%; font-size: 26px; animation: float-around-3 8s ease-in-out infinite;">🌟</div>
+        <div class="floating-icon" style="top: 75%; left: 25%; font-size: 24px; animation: float-around-1 7.5s ease-in-out infinite;">🎊</div>
+        <div class="floating-icon" style="top: 15%; right: 30%; font-size: 28px; animation: float-around-2 6.2s ease-in-out infinite;">🎓</div>
+        <div class="floating-icon" style="bottom: 40%; right: 25%; font-size: 22px; animation: float-around-3 5.8s ease-in-out infinite;">✨</div>
+        <div class="floating-icon" style="bottom: 8%; left: 35%; font-size: 25px; animation: float-around-2 7.2s ease-in-out infinite;">🌟</div>
 
         <!-- Logo Trường -->
         <img src="assets/logo/logo.jpeg" alt="Logo APD" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #D4AF37; box-shadow: 0 0 20px rgba(212,175,55,0.4); margin-bottom: 20px; z-index: 2;" data-aos="zoom-in">
 
         <!-- Ảnh tách nền của bạn -->
-        <!-- LƯU Ý: Phải up ảnh trong suốt tên avatar-tach-nen.png vào assets/images/ -->
         <img src="assets/images/avatar-tach-nen.png" alt="Tạ Minh Phú" style="height: 250px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); animation: floating 3.5s ease-in-out infinite; z-index: 2;" data-aos="fade-up">
 
         <!-- Tiêu đề -->
@@ -235,21 +251,23 @@
             </div>
             
             <div class="hero-img-box" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1500">
-                <!-- Đây là ảnh có nền trong thiệp chính -->
-                <img src="assets/images/IMG_7534.jpeg" alt="Minh Phú">
+                <!-- Đã thay đổi sử dụng file 1.jpg làm ảnh bìa -->
+                <img src="assets/images/1.jpg" alt="Minh Phú">
             </div>
 
             <div class="content-box" style="margin-top: 20px;" data-aos="fade-up">
                 <h1 class="premium-text" style="font-size: 26px; color: var(--primary-red); letter-spacing: 2px;">TẠ MINH PHÚ</h1>
-                <p class="premium-text" style="color: var(--gold-accent); font-weight: 700; font-size: 16px; margin-top: 5px;">CỬ NHÂN LUẬT KINH TẾ</p>
+                <!-- Đổi chuyên ngành thành Chính sách công -->
+                <p class="premium-text" style="color: var(--gold-accent); font-weight: 700; font-size: 16px; margin-top: 5px;">CỬ NHÂN CHÍNH SÁCH CÔNG</p>
             </div>
         </section>
 
         <!-- BỐ CỤC 2: TÂM SỰ -->
         <div class="section-header-block" data-aos="fade-right">DẤU ẤN THANH XUÂN</div>
         <section class="content-box" data-aos="fade-up" style="text-align: justify;">
+            <!-- Sửa lại đoạn văn tâm sự phù hợp với ngành Chính sách công -->
             <p style="color: #444; font-style: italic; font-size: 15px;">
-                "Hành trình tại Học viện Chính sách và Phát triển không chỉ là việc tiếp thu tri thức pháp lý, mà còn là quá trình vận dụng vào thực tiễn kinh doanh. Cảm ơn thầy cô, gia đình và những người bạn đã luôn đồng hành cùng Phú trên chặng đường 4 năm rực rỡ này."
+                "Hành trình tại Học viện Chính sách và Phát triển không chỉ là việc tiếp thu kiến thức chuyên môn, mà còn là quá trình rèn luyện tư duy phân tích và giải quyết các vấn đề thực tiễn của xã hội. Cảm ơn thầy cô, gia đình và những người bạn đã luôn đồng hành cùng Phú trên chặng đường 4 năm rực rỡ này."
             </p>
         </section>
 
@@ -271,19 +289,19 @@
             </div>
         </section>
 
-        <!-- BỐ CỤC 4: ALBUM ẢNH -->
+        <!-- BỐ CỤC 4: ALBUM ẢNH (SỬ DỤNG FILE 1 ĐẾN 7) -->
         <div class="section-header-block" data-aos="fade-right">ALBUM KỶ NIỆM</div>
         <section style="padding: 0 10px; overflow: hidden;" data-aos="fade-up">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="assets/images/IMG_1204.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_1223.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_1489.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_1527.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_2423.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_3862.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_4682.jpeg"></div>
-                    <div class="swiper-slide"><img src="assets/images/IMG_7090.jpeg"></div>
+                    <!-- Gọi toàn bộ các ảnh từ 1.jpg đến 7.jpg -->
+                    <div class="swiper-slide"><img src="assets/images/1.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/2.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/3.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/4.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/5.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/6.jpg"></div>
+                    <div class="swiper-slide"><img src="assets/images/7.jpg"></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -365,7 +383,7 @@
         }
 
         const mockCmts = [
-            {n: "Hoàng Nam", m: "Chúc mừng Phú tốt nghiệp nhé! Quá đỉnh xịn xò. 🎉"},
+            {n: "Hoàng Nam", m: "Chúc mừng Phú tốt nghiệp nhé! Cử nhân chính sách công xịn xò quá. 🎉"},
             {n: "Thu Trang", m: "Chúc cậu chặng đường mới gặt hái thật nhiều thành công nha!"}
         ];
 
