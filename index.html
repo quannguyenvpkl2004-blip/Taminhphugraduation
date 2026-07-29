@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Đổi tên trên thẻ Tab trình duyệt -->
     <title>Tạ Minh Phú | Lễ Tốt Nghiệp 2026</title>
     
     <!-- Nhúng Font chữ hỗ trợ 100% Tiếng Việt (Playfair Display & Lora) -->
@@ -41,6 +40,20 @@
             min-height: 100vh;
             position: relative;
             overflow: hidden;
+        }
+
+        /* --- STICKER TRÔI NỔI TRANG BÌA --- */
+        .floating-icon {
+            position: absolute;
+            opacity: 0.35;
+            animation: float-around 5s ease-in-out infinite alternate;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes float-around {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-20px) rotate(15deg); }
         }
 
         /* VÒM ĐỎ TRÊN CÙNG */
@@ -96,7 +109,6 @@
 
         .content-box { padding: 0 25px; text-align: center; }
         
-        /* Font sang trọng cho các tiêu đề */
         h1, h2, h3, .premium-text { font-family: 'Playfair Display', serif; }
         
         .btn-premium {
@@ -135,7 +147,7 @@
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
         .swiper-pagination-bullet-active { background: var(--primary-red) !important; }
 
-        /* NÚT PHÁT NHẠC Ở GÓC MÀN HÌNH */
+        /* NÚT PHÁT NHẠC */
         #music-btn {
             position: fixed;
             bottom: 25px;
@@ -174,11 +186,30 @@
 </head>
 <body>
 
-    <!-- MÀN HÌNH CHỜ -->
-    <div id="welcome-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #8B0000; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white;">
-        <h1 class="premium-text" style="color: #D4AF37; font-size: 28px; letter-spacing: 2px; margin-bottom: 10px;" data-aos="zoom-in">LỄ TỐT NGHIỆP</h1>
-        <p style="font-style: italic; margin-bottom: 40px; font-size: 16px;" data-aos="fade-up" data-aos-delay="200">Tạ Minh Phú | 2026</p>
-        <button onclick="openInvitation()" style="background: white; color: #8B0000; font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: 2px; padding: 15px 40px; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transform-origin: center;" data-aos="zoom-in" data-aos-delay="400">
+    <!-- MÀN HÌNH CHỜ HIỆU ỨNG SÂU CÓ STICKER, LOGO VÀ AVATAR TÁCH NỀN -->
+    <div id="welcome-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #8B0000 0%, #4A0000 100%); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; overflow: hidden;">
+        
+        <!-- Các icon/sticker trang trí trôi nổi -->
+        <div class="floating-icon" style="top: 15%; left: 15%; font-size: 30px; animation-delay: 0s;">🎓</div>
+        <div class="floating-icon" style="top: 25%; right: 15%; font-size: 25px; animation-delay: 1.5s;">✨</div>
+        <div class="floating-icon" style="bottom: 25%; left: 20%; font-size: 28px; animation-delay: 2s;">📜</div>
+        <div class="floating-icon" style="bottom: 15%; right: 20%; font-size: 35px; animation-delay: 0.5s;">🎓</div>
+        <div class="floating-icon" style="top: 40%; left: 10%; font-size: 20px; animation-delay: 1s;">✨</div>
+        <div class="floating-icon" style="top: 50%; right: 10%; font-size: 24px; animation-delay: 2.5s;">✨</div>
+
+        <!-- Logo Trường -->
+        <img src="assets/logo/logo.jpeg" alt="Logo APD" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #D4AF37; box-shadow: 0 0 20px rgba(212,175,55,0.4); margin-bottom: 20px; z-index: 2;" data-aos="zoom-in">
+
+        <!-- Ảnh tách nền của bạn -->
+        <!-- LƯU Ý: Phải up ảnh trong suốt tên avatar-tach-nen.png vào assets/images/ -->
+        <img src="assets/images/avatar-tach-nen.png" alt="Tạ Minh Phú" style="height: 250px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); animation: floating 3.5s ease-in-out infinite; z-index: 2;" data-aos="fade-up">
+
+        <!-- Tiêu đề -->
+        <h1 class="premium-text" style="color: #D4AF37; font-size: 30px; letter-spacing: 2px; margin-bottom: 5px; z-index: 2; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);" data-aos="zoom-in" data-aos-delay="200">LỄ TỐT NGHIỆP</h1>
+        <p style="font-style: italic; margin-bottom: 35px; font-size: 16px; z-index: 2; opacity: 0.9;" data-aos="fade-up" data-aos-delay="300">Tạ Minh Phú | 2026</p>
+
+        <!-- Nút bấm -->
+        <button onclick="openInvitation()" style="background: white; color: #8B0000; font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: 2px; padding: 15px 45px; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform-origin: center; z-index: 2;" data-aos="zoom-in" data-aos-delay="400">
             MỞ THIỆP
         </button>
     </div>
@@ -197,7 +228,6 @@
                 <p class="premium-text" style="letter-spacing: 1px; font-size: 16px; color: #FFFFFF; font-weight: 700; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); margin-bottom: 8px;">
                     THÂN MỜI TỚI DỰ LỄ TỐT NGHIỆP
                 </p>
-                <!-- Đổi tên thành MINH PHÚ -->
                 <div class="premium-text" style="font-size: 34px; font-weight: 700; color: var(--gold-accent); margin-top: 10px;">MINH PHÚ</div>
                 <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 15px; font-size: 16px; color: #fff;">
                     <span>✦</span><span class="premium-text" style="letter-spacing: 1px;">11 . 08 . 2026</span><span>✦</span>
@@ -205,11 +235,11 @@
             </div>
             
             <div class="hero-img-box" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1500">
+                <!-- Đây là ảnh có nền trong thiệp chính -->
                 <img src="assets/images/IMG_7534.jpeg" alt="Minh Phú">
             </div>
 
             <div class="content-box" style="margin-top: 20px;" data-aos="fade-up">
-                <!-- Đổi tên thành TẠ MINH PHÚ -->
                 <h1 class="premium-text" style="font-size: 26px; color: var(--primary-red); letter-spacing: 2px;">TẠ MINH PHÚ</h1>
                 <p class="premium-text" style="color: var(--gold-accent); font-weight: 700; font-size: 16px; margin-top: 5px;">CỬ NHÂN LUẬT KINH TẾ</p>
             </div>
@@ -219,7 +249,6 @@
         <div class="section-header-block" data-aos="fade-right">DẤU ẤN THANH XUÂN</div>
         <section class="content-box" data-aos="fade-up" style="text-align: justify;">
             <p style="color: #444; font-style: italic; font-size: 15px;">
-                <!-- Đổi đại từ thành Phú -->
                 "Hành trình tại Học viện Chính sách và Phát triển không chỉ là việc tiếp thu tri thức pháp lý, mà còn là quá trình vận dụng vào thực tiễn kinh doanh. Cảm ơn thầy cô, gia đình và những người bạn đã luôn đồng hành cùng Phú trên chặng đường 4 năm rực rỡ này."
             </p>
         </section>
@@ -276,7 +305,6 @@
         <section class="content-box" data-aos="fade-up">
             <div style="background: #fff; padding: 25px 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
                 <input type="text" id="gName" class="input-box" placeholder="Tên của bạn...">
-                <!-- Đổi lời kêu gọi -->
                 <textarea id="gMsg" class="input-box" placeholder="Để lại lời chúc cho Phú tại đây nhé..." style="height: 90px; resize: none;"></textarea>
                 <button onclick="postCmt()" class="btn-premium" style="width: 100%; border-radius: 8px;">GỬI LỜI CHÚC</button>
                 
@@ -287,7 +315,6 @@
         <!-- BỐ CỤC 7: XÁC NHẬN THAM GIA -->
         <div class="section-header-block" data-aos="fade-left">XÁC NHẬN THAM GIA</div>
         <section class="content-box" data-aos="zoom-in" style="margin-bottom: 50px;">
-            <!-- Đổi tên -->
             <p style="margin-bottom: 25px; color: #555; font-size: 15px;">Sự hiện diện của bạn là niềm vinh hạnh rất lớn. Vui lòng xác nhận để Phú tiện sắp xếp đón tiếp nhé!</p>
             <a href="https://zalo.me/" target="_blank" class="btn-premium">✔ XÁC NHẬN TỚI DỰ</a>
         </section>
@@ -342,7 +369,6 @@
             {n: "Thu Trang", m: "Chúc cậu chặng đường mới gặt hái thật nhiều thành công nha!"}
         ];
 
-        // Đã đổi key lưu trữ từ hq_grad_cmts thành tmp_grad_cmts (Tạ Minh Phú)
         function loadCmt() {
             var box = document.getElementById('cmt-list');
             box.innerHTML = '';
